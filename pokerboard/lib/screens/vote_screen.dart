@@ -13,7 +13,8 @@ class VoteScreen extends StatefulWidget {
   final String roomId;
   final bool isObserver;
 
-  VoteScreen({
+  const VoteScreen({
+    super.key,
     required this.story,
     required this.roomId,
     required this.isObserver,
@@ -129,34 +130,35 @@ class _VoteScreenState extends State<VoteScreen> {
 
           return Scaffold(
             appBar: AppBar(
-              title: Text('Vote on Story'),
+              title: const Text('Vote on Story'),
             ),
             body: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Story Details
                 Padding(
-                  padding: EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(16.0),
                   child: Text(
                     story.title,
-                    style:
-                        TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 24.0, fontWeight: FontWeight.bold),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Text(
                     story.description,
-                    style: TextStyle(fontSize: 16.0),
+                    style: const TextStyle(fontSize: 16.0),
                   ),
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 16.0),
                 // Estimation Cards
                 if (!widget.isObserver && !_hasVoted)
                   Expanded(
                     child: GridView.builder(
-                      padding: EdgeInsets.symmetric(horizontal: 16.0),
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 3,
                         childAspectRatio: 0.8,
                         crossAxisSpacing: 10,
@@ -180,15 +182,15 @@ class _VoteScreenState extends State<VoteScreen> {
                 // Submit Vote Button
                 if (!widget.isObserver && !_hasVoted)
                   Padding(
-                    padding: EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(16.0),
                     child: ElevatedButton(
                       onPressed: _selectedVote != null ? _submitVote : null,
-                      child: Text('Submit Vote'),
+                      child: const Text('Submit Vote'),
                     ),
                   ),
                 // Waiting Message
                 if (!widget.isObserver && _hasVoted && !allVotesSubmitted)
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.all(16.0),
                     child: Center(
                       child: Text(
@@ -219,13 +221,13 @@ class _VoteScreenState extends State<VoteScreen> {
                                 title: Text(userName),
                                 trailing: Text(
                                   vote,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 18.0,
                                       fontWeight: FontWeight.bold),
                                 ),
                               );
                             } else {
-                              return ListTile(
+                              return const ListTile(
                                 title: Text('Loading...'),
                               );
                             }
@@ -240,9 +242,9 @@ class _VoteScreenState extends State<VoteScreen> {
         } else {
           return Scaffold(
             appBar: AppBar(
-              title: Text('Vote on Story'),
+              title: const Text('Vote on Story'),
             ),
-            body: Center(
+            body: const Center(
               child: CircularProgressIndicator(),
             ),
           );

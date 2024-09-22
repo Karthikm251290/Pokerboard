@@ -7,6 +7,8 @@ import '../services/auth_service.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = '/home';
+
+  const HomeScreen({super.key});
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -63,36 +65,36 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Planning Poker - Home'),
+        title: const Text('Planning Poker - Home'),
         actions: [
           IconButton(
             onPressed: _signOut,
-            icon: Icon(Icons.logout),
+            icon: const Icon(Icons.logout),
           ),
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             // Create Room
             TextField(
               controller: _roomNameController,
-              decoration: InputDecoration(labelText: 'Room Name'),
+              decoration: const InputDecoration(labelText: 'Room Name'),
             ),
             ElevatedButton(
               onPressed: _createRoom,
-              child: Text('Create Room'),
+              child: const Text('Create Room'),
             ),
-            Divider(),
+            const Divider(),
             // Join Room
             TextField(
               controller: _joinRoomIdController,
-              decoration: InputDecoration(labelText: 'Room ID'),
+              decoration: const InputDecoration(labelText: 'Room ID'),
             ),
             ElevatedButton(
               onPressed: _joinRoom,
-              child: Text('Join Room'),
+              child: const Text('Join Room'),
             ),
           ],
         ),

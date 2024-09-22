@@ -6,7 +6,8 @@ class EstimationCard extends StatelessWidget {
   final bool isSelected;
   final VoidCallback onTap;
 
-  EstimationCard({
+  const EstimationCard({
+    super.key,
     required this.value,
     required this.isSelected,
     required this.onTap,
@@ -22,7 +23,7 @@ class EstimationCard extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8.0),
           side: isSelected
-              ? BorderSide(color: Colors.blue, width: 2.0)
+              ? const BorderSide(color: Colors.blue, width: 2.0)
               : BorderSide(color: Colors.grey.shade300),
         ),
         child: Container(

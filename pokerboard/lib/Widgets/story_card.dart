@@ -6,7 +6,8 @@ class StoryCard extends StatelessWidget {
   final StoryModel story;
   final VoidCallback onTap;
 
-  StoryCard({
+  const StoryCard({
+    super.key,
     required this.story,
     required this.onTap,
   });
@@ -15,28 +16,28 @@ class StoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     // Shorten the description for the preview
     String descriptionPreview = story.description.length > 50
-        ? story.description.substring(0, 50) + '...'
+        ? '${story.description.substring(0, 50)}...'
         : story.description;
 
     return GestureDetector(
       onTap: onTap,
       child: Card(
-        margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+        margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
         elevation: 2.0,
         child: ListTile(
           leading: CircleAvatar(
             backgroundColor: Colors.blueAccent,
             child: Text(
               story.priority.toString(),
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
             ),
           ),
           title: Text(
             story.title,
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           subtitle: Text(descriptionPreview),
-          trailing: Icon(Icons.chevron_right),
+          trailing: const Icon(Icons.chevron_right),
         ),
       ),
     );

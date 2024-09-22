@@ -11,12 +11,14 @@ import 'vote_screen.dart';
 import '../services/auth_service.dart';
 import '../widgets/story_card.dart';
 import '../models/user_model.dart';
+import 'dart:async';
 
 class RoomScreen extends StatefulWidget {
   final String roomId;
   final bool isObserver;
 
-  RoomScreen({
+  const RoomScreen({
+    super.key,
     required this.roomId,
     required this.isObserver,
   });
@@ -119,9 +121,9 @@ class _RoomScreenState extends State<RoomScreen> {
     if (_room == null) {
       return Scaffold(
         appBar: AppBar(
-          title: Text('Room'),
+          title: const Text('Room'),
         ),
-        body: Center(
+        body: const Center(
           child: CircularProgressIndicator(),
         ),
       );
@@ -132,7 +134,7 @@ class _RoomScreenState extends State<RoomScreen> {
         title: Text('Room: ${_room!.roomName}'),
         actions: [
           IconButton(
-            icon: Icon(Icons.exit_to_app),
+            icon: const Icon(Icons.exit_to_app),
             onPressed: _leaveRoom,
           ),
         ],
@@ -141,7 +143,7 @@ class _RoomScreenState extends State<RoomScreen> {
         children: [
           // Participants List (Optional)
           if (widget.isObserver)
-            Padding(
+            const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
                 'Participants:',
@@ -149,7 +151,7 @@ class _RoomScreenState extends State<RoomScreen> {
               ),
             ),
           if (widget.isObserver)
-            Container(
+            SizedBox(
               height: 80.0,
               child: StreamBuilder<RoomModel>(
                 stream: _roomService.streamRoom(widget.roomId),
@@ -171,7 +173,8 @@ class _RoomScreenState extends State<RoomScreen> {
                               String userName =
                                   userSnapshot.data!['name'] ?? 'User';
                               return Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 8.0),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 8.0),
                                 child: Chip(
                                   label: Text(userName),
                                 ),
@@ -184,17 +187,17 @@ class _RoomScreenState extends State<RoomScreen> {
                       },
                     );
                   } else {
-                    return Center(
+                    return const Center(
                       child: CircularProgressIndicator(),
                     );
                   }
                 },
               ),
             ),
-          Divider(),
+          const Divider(),
           Expanded(
             child: _stories.isEmpty
-                ? Center(
+                ? const Center(
                     child: Text('No stories available.'),
                   )
                 : ListView.builder(
@@ -210,10 +213,10 @@ class _RoomScreenState extends State<RoomScreen> {
           ),
           if (widget.isObserver)
             Padding(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               child: ElevatedButton(
                 onPressed: _addStory,
-                child: Text('Add Story'),
+                child: const Text('Add Story'),
               ),
             ),
         ],

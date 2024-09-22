@@ -8,7 +8,7 @@ import '/screens/home_screen.dart';
 import '/screens/room_screen.dart';
 import '/screens/story_screen.dart';
 import 'package:provider/provider.dart';
-import 'services/auth_service.dart';
+import '/services/auth_service.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -20,6 +20,8 @@ void main() async {
 }
 
 class PlanningPokerApp extends StatelessWidget {
+  const PlanningPokerApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
